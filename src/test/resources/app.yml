@@ -1,0 +1,32 @@
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: practice5
+
+  sql:
+    init:
+      mode: never
+      schema-locations: classpath*:/database.sql
+
+  datasource:
+    username: sa
+    password: sa
+    driver-class-name: org.postgresql.Driver
+    hikari:
+          auto-commit: false
+
+  docker:
+    compose:
+      enabled: true
+      lifecycle-management: start_only
+      start:
+        log-level: info
+        command: up
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        show_sql: true
